@@ -142,10 +142,14 @@ const pages = document.querySelectorAll("[data-page]");
 
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
+navigationLinks[i].addEventListener("click", function (event) {
+    event.preventDefault();
 
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
+for (let i = 0; i < pages.length; i++) {
+      const btnText = this.textContent.trim().toLowerCase();
+      const pageName = pages[i].dataset.page.trim().toLowerCase();
+
+      if (btnText === pageName) {
         pages[i].classList.add("active");
         navigationLinks[i].classList.add("active");
         window.scrollTo(0, 0);

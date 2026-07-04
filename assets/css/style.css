@@ -279,9 +279,10 @@ article.active {
   padding-top: 45px;
   border-radius: 14px;
   box-shadow: var(--shadow-2);
-  cursor: pointer;
+  cursor: default;
   z-index: 1;
 }
+
 
 .content-card::before {
   content: "";
@@ -562,7 +563,7 @@ main {
 
 .testimonials { margin-bottom: 30px; }
 
-.testimonials-title { margin-bottom: 20px; }
+.testimonials-title { margin-bottom: 30px; }
 
 .testimonials-list {
   display: flex;
@@ -600,11 +601,24 @@ main {
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
   line-height: 1.6;
-  display: -webkit-box;
-  line-clamp: 4;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  display: block;
+}
+
+.readmore-btn {
+  margin-top: 8px;
+  color: var(--orange-yellow-crayola);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-400);
+}
+
+.readmore-btn:hover,
+.readmore-btn:focus {
+  color: var(--orange-yellow-crayola);
+  opacity: 0.85;
+}
+
+.readmore-content {
+  transition: none;
 }
 
 
@@ -1408,7 +1422,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   /* testimonials */
 
-  .testimonials-title { margin-bottom: 25px; }
+  .testimonials-title { margin-bottom: 30px; }
 
   .testimonials-list {
     gap: 30px;
