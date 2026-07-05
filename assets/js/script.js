@@ -134,6 +134,79 @@ for (let i = 0; i < formInputs.length; i++) {
   });
 }
 
+// Formspree submit success toaster
+if (form) {
+  form.addEventListener("submit", async function (e) {
+    // Prevent navigation to the Formspree page.
+    // We'll submit via fetch and then show the toaster on success.
+    e.preventDefault();
+
+    const action = form.getAttribute("action") || "";
+    if (!action) return;
+
+    // Disable button while submitting
+    if (formBtn) formBtn.setAttribute("disabled", "");
+
+    const formData = new FormData(form);
+
+    try {
+    const res = await fetch(action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          "Accept": "application/json",
+        },
+        // Prevent any unexpected navigation in some environments
+        // (we already call preventDefault above).
+        redirect: "follow",
+      });
+
+      if (!res.ok) throw new Error("Form submission failed");
+
+      const existing = document.querySelector("[data-form-toaster]");
+      if (existing) existing.remove();
+
+      const toaster = document.createElement("div");
+      toaster.setAttribute("data-form-toaster", "true");
+      toaster.textContent = "Message sent!";
+
+      // minimal inline styling to avoid modifying your CSS heavily
+      toaster.style.position = "fixed";
+      toaster.style.left = "50%";
+      toaster.style.bottom = "30px";
+      toaster.style.transform = "translateX(-50%)";
+      toaster.style.background = "rgba(0,0,0,0.85)";
+      toaster.style.color = "#fff";
+      toaster.style.padding = "12px 16px";
+      toaster.style.borderRadius = "12px";
+      toaster.style.boxShadow = "0 16px 30px rgba(0,0,0,0.35)";
+      toaster.style.zIndex = "9999";
+      toaster.style.fontSize = "14px";
+      toaster.style.opacity = "0";
+      toaster.style.transition = "opacity 0.25s ease";
+
+      document.body.appendChild(toaster);
+      requestAnimationFrame(() => {
+        toaster.style.opacity = "1";
+      });
+
+      setTimeout(() => {
+        toaster.style.opacity = "0";
+        setTimeout(() => {
+          if (toaster && toaster.parentNode) toaster.parentNode.removeChild(toaster);
+        }, 250);
+      }, 2500);
+
+      form.reset();
+      if (formBtn) formBtn.setAttribute("disabled", "");
+    } catch (err) {
+      // Basic fallback: re-enable button, no redirect.
+      if (formBtn) formBtn.removeAttribute("disabled");
+    }
+  });
+}
+
+
 
 
 // page navigation variables

@@ -568,7 +568,7 @@ main {
 .testimonials-list {
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 15px;
   margin: 0 -15px;
   padding: 25px 15px;
@@ -582,7 +582,16 @@ main {
 .testimonials-item {
   min-width: 100%;
   scroll-snap-align: center;
+  display: flex;
 }
+
+.testimonials-item .content-card {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 
 .testimonials-avatar-box {
   position: absolute;
