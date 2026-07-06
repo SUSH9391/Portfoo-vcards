@@ -14,7 +14,7 @@ This portfolio is built to highlight my expertise as a Software and AI/ML Engine
 
 ## Live Demo
 
-You can view the live version of my portfolio here: [sushmithadev-delta.vercel.app](https://sushhh.vercel.app/)
+You can view the live version of my portfolio here: [sushhh.vercel.app](https://sushhh.vercel.app/)
 
 ## Project Snapshot
 
