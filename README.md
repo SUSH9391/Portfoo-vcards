@@ -19,7 +19,9 @@ You can view the live version of my portfolio here: [sushmithadev-delta.vercel.a
 ## Project Snapshot
 
 *(Note: Please replace `website-demo-image/placeholder.png` with the actual file path of your screenshot in the `website-demo-image` folder.)*
+## Project Snapshot
 
+![Project Screenshot](website-demo-image/placeholder.png)
 
 ## Technologies Used
 
